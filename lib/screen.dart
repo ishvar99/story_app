@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'story_brain.dart';
 class StoryPage extends StatefulWidget {
   @override
   _StoryPageState createState() => _StoryPageState();
@@ -7,6 +7,7 @@ class StoryPage extends StatefulWidget {
 
 class _StoryPageState extends State<StoryPage> {
   @override
+  StoryBrain story=StoryBrain();
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -21,7 +22,7 @@ class _StoryPageState extends State<StoryPage> {
               child: Center(
                 child: Container(
                   child: Text(
-                    'Story text will go here',
+                    story.getStoryLine(),
                     style: TextStyle(
                       fontSize: 24,
                       color: Colors.white,
@@ -37,7 +38,7 @@ class _StoryPageState extends State<StoryPage> {
                 child: Container(
                   child: Center(
                     child: Text(
-                      'Choice 1',
+                      story.getChoice1(),
                       style: TextStyle(fontSize: 24, color: Colors.white),
                     ),
                   ),
@@ -52,7 +53,7 @@ class _StoryPageState extends State<StoryPage> {
                 child: Container(
                     child: Center(
                       child: Text(
-                        'Choice 2',
+                        story.getChoice2(),
                         style: TextStyle(fontSize: 24, color: Colors.white),
                       ),
                     ),
