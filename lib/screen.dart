@@ -70,18 +70,22 @@ class _StoryPageState extends State<StoryPage> {
                       story.getStoryLine();
                     });
                   },
-                  child: Container(
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            story.getChoice2(),
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 24, color: Colors.white),
+                  child: Visibility(
+
+                    visible: story.checkVisibleStatus(),
+                    child: Container(
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              story.getChoice2(),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(fontSize: 24, color: Colors.white),
+                            ),
                           ),
                         ),
-                      ),
-                      color: Colors.blue),
+                        color: Colors.blue),
+                  ),
                 ),
               ),
             ),

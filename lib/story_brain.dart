@@ -1,6 +1,7 @@
 import 'story.dart';
 class StoryBrain{
   int _storyIndex=0;
+  bool _disableButton=false;
   List<Story> _storyData = [
     Story(
         storyTitle:
@@ -47,21 +48,28 @@ class StoryBrain{
         case 1:{
           if(choice==1)
             _storyIndex=2;
-          else
-            _storyIndex=3;
+          else {
+            _storyIndex = 3;
+            _disableButton=true;
+          }
         }
         break;
         case 2:{
-          if(choice==1)
-            _storyIndex=5;
-          else
-            _storyIndex=4;
+          if(choice==1) {
+            _storyIndex = 5;
+            _disableButton=true;
+          }
+          else {
+            _storyIndex = 4;
+            _disableButton=true;
+          }
         }
         break;
         case 3:
         case 4:
         case 5:{
           _storyIndex=0;
+          _disableButton=false;
         }
         break;
       }
@@ -71,5 +79,8 @@ class StoryBrain{
   }
   String getChoice2(){
     return _storyData[_storyIndex].choice2;
+  }
+  bool checkVisibleStatus(){
+    return !_disableButton;
   }
 }
