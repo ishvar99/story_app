@@ -6,8 +6,8 @@ class StoryPage extends StatefulWidget {
 }
 
 class _StoryPageState extends State<StoryPage> {
-  @override
   StoryBrain story=StoryBrain();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -18,46 +18,71 @@ class _StoryPageState extends State<StoryPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Expanded(
-              flex: 5,
+              flex: 7,
               child: Center(
-                child: Container(
-                  child: Text(
-                    story.getStoryLine(),
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: Container(
                     child: Text(
-                      story.getChoice1(),
-                      style: TextStyle(fontSize: 24, color: Colors.white),
+                      story.getStoryLine(),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 24,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                  color: Colors.red,
                 ),
               ),
             ),
             Expanded(
-              flex: 1,
+              flex: 2,
               child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
+                padding: const EdgeInsets.all(20.0),
+                child: GestureDetector(
+                  onTap: (){
+                    story.nextStory(1);
+                    setState(() {
+                      story.getStoryLine();
+                    });
+                    },
+                  child: Container(
                     child: Center(
                       child: Text(
-                        story.getChoice2(),
+                        story.getChoice1(),
+                        textAlign: TextAlign.center,
                         style: TextStyle(fontSize: 24, color: Colors.white),
                       ),
                     ),
-                    color: Colors.blue),
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: GestureDetector(
+                  onTap: (){
+                    story.nextStory(2);
+                    setState(() {
+                      story.getStoryLine();
+                    });
+                  },
+                  child: Container(
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            story.getChoice2(),
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 24, color: Colors.white),
+                          ),
+                        ),
+                      ),
+                      color: Colors.blue),
+                ),
               ),
             ),
           ],

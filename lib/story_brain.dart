@@ -35,6 +35,37 @@ class StoryBrain{
   String getStoryLine(){
     return _storyData[_storyIndex].storyTitle;
   }
+  void nextStory(int choice){
+      switch(_storyIndex){
+        case 0:{
+          if(choice==1)
+            _storyIndex=2;
+          else
+            _storyIndex=1;
+        }
+        break;
+        case 1:{
+          if(choice==1)
+            _storyIndex=2;
+          else
+            _storyIndex=3;
+        }
+        break;
+        case 2:{
+          if(choice==1)
+            _storyIndex=5;
+          else
+            _storyIndex=4;
+        }
+        break;
+        case 3:
+        case 4:
+        case 5:{
+          _storyIndex=0;
+        }
+        break;
+      }
+  }
   String getChoice1(){
     return _storyData[_storyIndex].choice1;
   }
